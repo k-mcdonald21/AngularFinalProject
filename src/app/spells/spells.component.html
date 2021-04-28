@@ -1,0 +1,77 @@
+<div class='container-fluid'>
+    <h1>Keanan's Great DnD Spell Finder! (S00199994)</h1>
+    <div>
+      <div class="form-group">
+        <input type='text' name="spell-name" class="form-control" #spellName placeholder="Enter Spell Name">
+      </div>
+      <div class="btn-group">
+        <button id="apiBtn"(click)="getSpellDetails(spellName.value)" type="submit" class="btn btn-primary btn-md">Get Spell Details</button>
+        <button id="firebaseBtn"(click)="getFavSpell()" type="submit" class="btn btn-secondary btn-md">Show Favourite Spells</button>
+      </div>
+    </div>
+  
+    <div id="finderBlock" class="row mt-4 p-4" *ngIf="spellData">
+      <div class="card card-body">
+        <div>
+          <h3>{{spellData.Error}}</h3>
+        </div>
+        <div *ngIf="spellData.index">
+          <button (click)="favouriteSpell(spellData)" class="btn btn-success">Favourite Spell</button>
+          <h4>Name:</h4>
+          <p>{{spellData.name}}</p>
+          <h4>Description:</h4>
+          <p>{{spellData.desc}}</p>
+          <h4>Higher Level:</h4>
+          <p>{{spellData.higher_level}}</p>
+          <h4>Range:</h4>
+          <p>{{spellData.range}}</p>
+          <h4>Components:</h4>
+          <p>{{spellData.components}}</p>
+          <h4>Materials:</h4>
+          <p>{{spellData.materials}}</p>
+          <h4>Ritual:</h4>
+          <p>{{spellData.ritual}}</p>
+          <h4>Duration:</h4>
+          <p>{{spellData.duration}}</p>
+          <h4>Concentration:</h4>
+          <p>{{spellData.concentration}}</p>
+          <h4>Casting Time: </h4>
+          <p>{{spellData.casting_time}}</p>
+          <h4>Level:</h4>
+          <p>{{spellData.level}}</p>
+          <h4>Attack Type:</h4>
+          <p>{{spellData.attack_type}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4 p-4" *ngFor="let fav of favouriteData" [favouriteData] = "favouriteData">
+      <div class="card card-body">
+        <h2>Favourite Spell:</h2>
+        <h4>Name:</h4>
+        <p>{{fav.spell.name}}</p>
+          <h4>Description:</h4>
+          <p>{{fav.spell.desc}}</p>
+          <h4>Higher Level:</h4>
+          <p>{{fav.spell.higher_level}}</p>
+          <h4>Range:</h4>
+          <p>{{fav.spell.range}}</p>
+          <h4>Components:</h4>
+          <p>{{fav.spell.components}}</p>
+          <h4>Materials:</h4>
+          <p>{{fav.spell.materials}}</p>
+          <h4>Ritual:</h4>
+          <p>{{fav.spell.ritual}}</p>
+          <h4>Duration:</h4>
+          <p>{{fav.spell.duration}}</p>
+          <h4>Concentration:</h4>
+          <p>{{fav.spell.concentration}}</p>
+          <h4>Casting Time:</h4>
+          <p>{{fav.spell.casting_time}}</p>
+          <h4>Level:</h4>
+          <p>{{fav.spell.level}}</p>
+          <h4>Attack Type:</h4>
+          <p>{{fav.spell.attack_type}}</p>
+      </div>
+    </div>
+  </div>
